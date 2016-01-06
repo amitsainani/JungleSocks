@@ -18,11 +18,9 @@ describe 'JungleSocks' do
 
     expect(@driver.title).to eql 'JungleSocks'
 
-    h1 = @driver.find_element(css: 'h1')
-    expect(h1.text).to eql 'Welcome To Jungle Socks!'
+    expect(@driver.find_element(css: 'h1').text).to eql 'Welcome To Jungle Socks!'
 
-    p = @driver.find_element(css: 'p')
-    expect(p.text).to eql 'Please enter the quantiy of each kind of sock and then click the checkout button'
+    expect(@driver.find_element(css: 'p').text).to eql 'Please enter the quantiy of each kind of sock and then click the checkout button'
 
     def quantity(zebra, lion, elephant, giraffe)
       element = @driver.find_element(id: 'line_item_quantity_zebra').send_keys zebra
@@ -42,10 +40,14 @@ describe 'JungleSocks' do
 
     element = @driver.find_element(name: 'commit').submit
 
-    h1 = @driver.find_element(css: 'h1')
-    expect(h1.text).to eql 'Please Confirm Your Order'
+    expect(@driver.find_element(css: 'h1').text).to eql 'Please Confirm Your Order'
 
     element = @driver.find_element(id: 'subtotal')
-    expect(element.text).to eql 5*13.00 + 0*20.00 + 3*35.00 + 5*17.00
+    element = element.text
+    element.gsub!('$','')
+    element = element.to_f
+    # puts element
+    subtotal = 5*13.00 + 0*20.00 + 3*35.00 + 5*17.00
+    expect(element).to eql subtotal.to_f
   end
 end
