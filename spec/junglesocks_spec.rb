@@ -1,9 +1,10 @@
-# filename: junglesocks_spec.rb
+# filename: spec/junglesocks_spec.rb
 
 require 'selenium-webdriver'
 require 'rspec/expectations'
 extend RSpec::Matchers
-require_relative '../junglesocks'
+require_relative '../pages/junglesocks'
+require_relative 'spec_helper'
 
 describe 'JungleSocks' do
 

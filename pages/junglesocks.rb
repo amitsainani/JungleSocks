@@ -1,4 +1,4 @@
-# filename: junglesocks.rb
+# filename: pages/junglesocks.rb
 
 class JungleSocks
 
