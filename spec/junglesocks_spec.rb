@@ -5,6 +5,7 @@ require 'rspec/expectations'
 extend RSpec::Matchers
 
 describe 'JungleSocks' do
+
   before(:each) do
     @driver = Selenium::WebDriver.for :firefox
   end
@@ -50,4 +51,5 @@ describe 'JungleSocks' do
     subtotal = 5*13.00 + 0*20.00 + 3*35.00 + 5*17.00
     expect(element).to eql subtotal.to_f
   end
+  
 end
